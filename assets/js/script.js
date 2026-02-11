@@ -3,12 +3,12 @@ var BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
 if (typeof BASE_PATH === "undefined") {
   var BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
 }
-const menuBtn = document.getElementById("menuButton");
-const closeBtn = document.getElementById("closeMenu");
-const sidebar = document.getElementById("sidebar");
-const backdrop = document.getElementById("menuBackdrop");
+var menuBtn = document.getElementById("menuButton");
+var closeBtn = document.getElementById("closeMenu");
+var sidebar = document.getElementById("sidebar");
+var backdrop = document.getElementById("menuBackdrop");
 
-const toggleMenu = () => {
+var toggleMenu = () => {
   sidebar?.classList.toggle("-translate-x-full");
   backdrop?.classList.toggle("hidden");
 };
@@ -20,7 +20,6 @@ backdrop?.addEventListener("click", toggleMenu);
 function addToCart(event) {
   event.preventDefault();
 
-  // Bloqueamos el botón para evitar doble click
   const submitBtn = event.target.querySelector('button[type="submit"]');
   if (submitBtn) submitBtn.disabled = true;
 
