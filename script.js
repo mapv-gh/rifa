@@ -52,3 +52,22 @@ function addToCart(event) {
 
 // Hacemos la función global para que funcione con el onsubmit="..." del HTML
 window.addToCart = addToCart;
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileDropdownBtn = document.querySelector(
+    '[data-target="sub-cat-mobile"]',
+  );
+  if (mobileDropdownBtn) {
+    mobileDropdownBtn.addEventListener("click", function () {
+      const targetId = this.getAttribute("data-target");
+      const targetDiv = document.getElementById(targetId);
+      const arrow = this.querySelector(".arrow-icon");
+
+      targetDiv.classList.toggle("hidden");
+      if (!targetDiv.classList.contains("hidden")) {
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        arrow.style.transform = "rotate(0deg)";
+      }
+    });
+  }
+});

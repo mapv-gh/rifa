@@ -4,8 +4,6 @@ $inViews = (strpos($_SERVER['PHP_SELF'], 'views') !== false);
 $base = $inViews ? "../" : "./";
 $searchAction = $inViews ? "productos.php" : "views/productos.php";
 
-require_once($base . 'provider/conexion.php'); //CONECCIONPHP
-
 include($base . '/meta.php') ?>
 
 <body class="bg-black text-white pt-20 md:pt-24"> 
@@ -116,23 +114,3 @@ include($base . '/meta.php') ?>
         </div>
     </div>
 </nav>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileDropdownBtn = document.querySelector('[data-target="sub-cat-mobile"]');
-    if(mobileDropdownBtn) {
-        mobileDropdownBtn.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const targetDiv = document.getElementById(targetId);
-            const arrow = this.querySelector('.arrow-icon');
-            
-            targetDiv.classList.toggle('hidden');
-            if(!targetDiv.classList.contains('hidden')){
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        });
-    }
-});
-</script>
