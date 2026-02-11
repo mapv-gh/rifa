@@ -1,4 +1,3 @@
-// Opción más robusta para rutas (o mantén la tuya si estás seguro de la estructura)
 const BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
 
 const menuBtn = document.getElementById("menuButton");
@@ -17,34 +16,39 @@ backdrop?.addEventListener("click", toggleMenu);
 
 function addToCart(event) {
   event.preventDefault();
-  const formData = new FormData(event.target);
 
+  // Bloqueamos el botón para evitar doble click
   const submitBtn = event.target.querySelector('button[type="submit"]');
   if (submitBtn) submitBtn.disabled = true;
+
+  const formData = new FormData(event.target);
 
   fetch(`${BASE_PATH}provider/add_to_cart.php`, {
     method: "POST",
     body: formData,
   })
-    .then((r) => {
-      if (!r.ok) throw new Error("Error HTTP");
-      return r.json();
-    })
+    .then((r) => r.json())
     .then((data) => {
       if (data.status === "success") {
-        showToast(data.message || "Producto agregado correctamente", "success");
+        // ÉXITO: Aquí puedes redirigir o mostrar un alert simple
+        console.log("Producto agregado:", data.message);
+        alert("Producto agregado al carrito");
       } else {
-        // AHORA SI mostramos el error del backend
-        showToast(data.message || "No se pudo agregar", "error");
+        // ERROR LÓGICO (Stock, Login, etc)
+        console.error("Error al agregar:", data.message);
+        alert(data.message || "Error al agregar producto");
       }
     })
     .catch((e) => {
+      // ERROR DE RED O SERVIDOR
       console.error(e);
-      showToast("Error de conexión con el servidor", "error");
+      alert("Ocurrió un error de conexión");
     })
     .finally(() => {
+      // Reactivamos el botón siempre
       if (submitBtn) submitBtn.disabled = false;
     });
 }
 
+// Hacemos la función global para que funcione con el onsubmit="..." del HTML
 window.addToCart = addToCart;
