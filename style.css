@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: black;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* --- OCULTAR SCROLLBAR (Para el Sidebar) --- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* --- ESTADOS DEL NAVBAR (STICKY LOGO) --- */
+#navbar,
+#navbar-container,
+#nav-logo,
+#nav-text {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-scrolled #navbar-container {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.nav-scrolled #nav-logo {
+  width: 3rem !important;
+}
+
+.nav-scrolled #nav-text {
+  font-size: 1.125rem !important;
+}
+
+@media (max-width: 768px) {
+  .nav-scrolled #navbar-container a {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* --- SIDEBAR --- */
+#sidebar {
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+#sidebar a {
+  transition: all 0.3s ease;
+  color: white;
+}
+
+/* --- COMPONENTES DE PRODUCTO --- */
+.ribbon {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  z-index: 10;
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 115px;
+  padding: 8px 0;
+  background-color: #dc2626;
+  color: white;
+  text-align: center;
+  font-weight: 900;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  transform: rotate(-45deg);
+  top: 18px;
+  left: -25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fly-item {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #facc15;
+  box-shadow: 0 10px 25px rgba(250, 204, 21, 0.4);
+}
