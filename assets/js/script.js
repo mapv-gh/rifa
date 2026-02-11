@@ -1,5 +1,8 @@
-const BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
-
+var BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
+// O mejor aún, comprueba si ya existe:
+if (typeof BASE_PATH === "undefined") {
+  var BASE_PATH = window.location.pathname.includes("/views/") ? "../" : "./";
+}
 const menuBtn = document.getElementById("menuButton");
 const closeBtn = document.getElementById("closeMenu");
 const sidebar = document.getElementById("sidebar");
