@@ -1,6 +1,6 @@
 <?php
 session_start();
-//require_once('./provider/conexion.php');
+require_once('./provider/conexion.php');
 require_once('./components/producto_component.php');
 $title = 'Curacaví FC | Rifa ';
 
