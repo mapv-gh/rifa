@@ -1,16 +1,6 @@
 <?php
 $baseFooter = (strpos($_SERVER['PHP_SELF'], 'views') !== false) ? "../" : "./";
 
-$categoriasFooter = $categoriasHeader ?? $categorias ?? [];
-
-if (empty($categoriasFooter)) {
-    require_once($baseFooter . 'provider/conexion.php');
-    $sqlRespaldo = "SELECT id_categoria, nombre_categoria FROM categorias LIMIT 5";
-    $resRespaldo = $conn->query($sqlRespaldo);
-    if ($resRespaldo) {
-        $categoriasFooter = $resRespaldo->fetch_all(MYSQLI_ASSOC);
-    }
-}
 ?>
 
 <footer class="bg-slate-900 text-slate-300 pt-12 pb-6 border-t border-white/5 mt-5">
