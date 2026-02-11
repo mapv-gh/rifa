@@ -1,12 +1,15 @@
-# Usar una imagen oficial de PHP con Apache
+# Usamos la imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
-# Copiar los archivos de tu proyecto al servidor
+# 1. Habilitamos mod_rewrite (ESTO ES LO QUE TE FALTA)
+RUN a2enmod rewrite
+
+# 2. Copiamos tus archivos al servidor
 COPY . /var/www/html/
 
-# Configurar el puerto que usa Render (importante)
+# 3. Configuramos el puerto para que Render no se queje
 ENV PORT=8080
 RUN sed -i "s/80/\${PORT}/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 
-# Dar permisos
+# 4. Ajustamos permisos para evitar errores de escritura
 RUN chown -R www-data:www-data /var/www/html
