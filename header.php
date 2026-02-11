@@ -6,13 +6,8 @@ $searchAction = $inViews ? "productos.php" : "views/productos.php";
 
 require_once($base . 'provider/conexion.php'); //CONECCIONPHP
 
-//CAPTURAR CATEGORIAS
-$sqlCat = "SELECT id_categoria, nombre_categoria FROM categorias";
-$resCat = $conn->query($sqlCat);
-$categoriasMenu = ($resCat) ? $resCat->fetch_all(MYSQLI_ASSOC) : [];
-?>
+include($base . '/meta.php') ?>
 
-<?php include($base . '/meta.php') ?>
 <body class="bg-black text-white pt-20 md:pt-24"> 
 
 <div id="menuBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden transition-opacity duration-300 md:hidden"></div>
