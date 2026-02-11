@@ -9,5 +9,5 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
     <title><?= $title ?? 'Curacaví FC' ?></title>
-    <script src="<?= $base ?>script.js" defer></script>
+    <script src="<?= $base ?>assets/js/script.js" defer></script>
 </head>
